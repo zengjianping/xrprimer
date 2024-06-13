@@ -33,6 +33,7 @@ from . import (
     smplx,
     spin_smplx,
     star,
+    golfpose
 )
 
 try:
@@ -51,6 +52,7 @@ except (ImportError, ModuleNotFoundError):
 
 KEYPOINTS_FACTORY = {
     'human_data': human_data.HUMAN_DATA,
+    'golfpose': golfpose.GOLFPOSE_KEYPOINTS,
     'agora': agora.AGORA_KEYPOINTS,
     'campus': campus.CAMPUS_KEYPOINTS,
     'coco': coco.COCO_KEYPOINTS,
