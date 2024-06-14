@@ -1,4 +1,5 @@
-from mmcv.utils import Registry
+#from mmcv.utils import Registry
+from mmengine.registry import Registry
 
 from .base_triangulator import BaseTriangulator
 from .opencv_triangulator import OpencvTriangulator

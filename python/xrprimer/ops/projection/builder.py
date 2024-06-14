@@ -1,4 +1,6 @@
-from mmcv.utils import Registry
+#from mmcv.utils import Registry
+from mmengine.registry import Registry
+
 
 from .base_projector import BaseProjector
 from .opencv_projector import OpencvProjector

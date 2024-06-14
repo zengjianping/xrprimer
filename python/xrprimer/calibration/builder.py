@@ -1,4 +1,5 @@
-from mmcv.utils import Registry
+#from mmcv.utils import Registry
+from mmengine.registry import Registry
 
 from .base_calibrator import BaseCalibrator
 from .mview_fisheye_calibrator import MviewFisheyeCalibrator
