@@ -10,6 +10,7 @@ from xrprimer.transform.convention.keypoints_convention import (
     get_keypoint_idx,
     get_keypoint_names,
     get_keypoints_factory,
+    get_limbs_factory,
     get_mapping_dict,
     human_data,
 )
@@ -23,6 +24,7 @@ def get_limbs_from_keypoints(
     frame_idx: Union[int, None] = None,
     person_idx: Union[int, None] = None,
     keypoints_factory: Union[dict, None] = None,
+    limbs_factory: Union[dict, None] = None,
 ) -> Limbs:
     """Get an instance of class Limbs, from a Keypoints instance. It searches
     existing limbs in HumanData convention.
@@ -53,7 +55,15 @@ def get_limbs_from_keypoints(
     if keypoints_factory is None:
         keypoints_factory = get_keypoints_factory()
     limbs_source = human_data.HUMAN_DATA_LIMBS_INDEX
+    if limbs_factory is None:
+        limbs_factory = get_limbs_factory()
+    src_convention = keypoints.get_convention()
+    dst_convention = 'human_data'
+    if src_convention in limbs_factory:
+        limbs_source = limbs_factory[src_convention]
+        dst_convention = src_convention
     keypoints_np = keypoints.to_numpy()
+
     # if both frame_idx and person_idx are set
     # take the frame and person
     if frame_idx is not None and person_idx is not None:
@@ -81,10 +91,10 @@ def get_limbs_from_keypoints(
         logger=keypoints.logger)
     human_data_keypoints = convert_keypoints(
         keypoints=one_frame_keypoints,
-        dst='human_data',
+        dst=dst_convention,
         keypoints_factory=keypoints_factory)
     mapping_back = get_mapping_dict(
-        src='human_data',
+        src=dst_convention,
         dst=keypoints.get_convention(),
         keypoints_factory=keypoints_factory)
     mask = human_data_keypoints.get_mask()[0, 0, :]
@@ -92,7 +102,7 @@ def get_limbs_from_keypoints(
     parts = []
     part_names = []
     connecntion_names = []
-    human_data_kps = get_keypoint_names('human_data')
+    human_data_kps = get_keypoint_names(dst_convention)
     for part_name, part_limbs in limbs_source.items():
         part_record = []
         for limb in part_limbs:

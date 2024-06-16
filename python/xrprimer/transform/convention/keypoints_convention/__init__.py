@@ -99,6 +99,22 @@ KEYPOINTS_FACTORY = {
 }
 
 
+LIMBS_FACTORY = {
+    'human_data': human_data.HUMAN_DATA_LIMBS_INDEX,
+    'golfpose': golfpose.GOLFPOSE_LIMBS_INDEX,
+}
+
+def get_limbs_factory() -> dict:
+    """Get the LIMBS_FACTORY defined in keypoints convention.
+
+    Returns:
+        dict:
+            LIMBS_FACTORY whose keys are convention
+            names and values are keypoints lists.
+    """
+    return LIMBS_FACTORY
+
+
 _KEYPOINTS_MAPPING_CACHE = defaultdict(dict)
 
 
