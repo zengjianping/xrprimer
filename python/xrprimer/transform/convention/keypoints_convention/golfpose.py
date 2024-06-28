@@ -58,9 +58,10 @@ GOLFPOSE_LIMBS={
         ['right_ankle', 'right_smalltoe'],
         ['right_ankle', 'right_heel'],
         ['left_wrist', 'left_middle_1'],
-        ['right_wrist', 'right_middle_1']
-    ],
-    'golf_club': [
+        ['right_wrist', 'right_middle_1'],
+        ['right_middle_1', 'golf_club_tail'],
+    #],
+    #'golf_club': [
         ['golf_club_head', 'golf_club_tail']
     ]
 }
