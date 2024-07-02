@@ -33,6 +33,7 @@ from . import (
     smplx,
     spin_smplx,
     star,
+    halpe28,
     golfpose
 )
 
@@ -53,6 +54,7 @@ except (ImportError, ModuleNotFoundError):
 KEYPOINTS_FACTORY = {
     'human_data': human_data.HUMAN_DATA,
     'golfpose': golfpose.GOLFPOSE_KEYPOINTS,
+    'halpe28': halpe28.HALPE28_KEYPOINTS,
     'agora': agora.AGORA_KEYPOINTS,
     'campus': campus.CAMPUS_KEYPOINTS,
     'coco': coco.COCO_KEYPOINTS,
@@ -102,6 +104,7 @@ KEYPOINTS_FACTORY = {
 LIMBS_FACTORY = {
     'human_data': human_data.HUMAN_DATA_LIMBS_INDEX,
     'golfpose': golfpose.GOLFPOSE_LIMBS_INDEX,
+    'halpe28': halpe28.HALPE28_LIMBS_INDEX
 }
 
 def get_limbs_factory() -> dict:
